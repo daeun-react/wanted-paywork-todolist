@@ -7,7 +7,5 @@ const rootReducer = combineReducers({ todos });
 export function* rootSaga() {
   yield all([watchTodos()]);
 }
-
-export type RootState = ReturnType<typeof rootReducer>;
-
 export default rootReducer;
+export type RootState = ReturnType<typeof rootReducer>;
