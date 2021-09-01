@@ -37,7 +37,7 @@ const TodoList: React.FC<ITodoListProps> = ({ status }) => {
 
   const onSort = (prev: TodoType, next: TodoType) => {
     return sortName === 'create'
-      ? new Date(prev.createAt).getTime() - new Date(next.createAt).getTime()
+      ? prev.id - next.id
       : new Date(prev.due).getTime() - new Date(next.due).getTime();
   };
 
