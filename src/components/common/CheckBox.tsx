@@ -13,6 +13,7 @@ const CheckBox: React.FC<ICheckBoxProps> = ({ todo }) => {
   const { id, isCheck, color } = todo;
   const dispatch = useDispatch();
 
+  /* 체크버튼 클릭 시 isCheck 상태값 변경 */
   const handleCheckBoxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(toggleTodo(id, e.target.checked));
   };

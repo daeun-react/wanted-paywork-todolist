@@ -19,6 +19,7 @@ const TodoCreate: React.FC<ITodoCreateProps> = (props) => {
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
   const [due, setDue] = useState<Date>(today);
 
+  /* Todo 생성 시 완료일 커스텀 컴포넌트 */
   const customInput = (
     <CustomDateInput>
       완료일 선택:
@@ -27,6 +28,7 @@ const TodoCreate: React.FC<ITodoCreateProps> = (props) => {
     </CustomDateInput>
   );
 
+  /* Todo 생성 시 색상 선택 컴포넌트 */
   const renderColorButton = () => {
     return COLOR_LIST.map((color) => (
       <ColorButton
@@ -41,12 +43,14 @@ const TodoCreate: React.FC<ITodoCreateProps> = (props) => {
     ));
   };
 
+  /* 초기값 셋팅 */
   const initializeState = () => {
     setDue(today);
     setContent('');
     setSelectedColor(null);
   };
 
+  /* Todo 생성 시, input 값 변경 함수 */
   const handleContentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
       initializeState();
@@ -54,14 +58,17 @@ const TodoCreate: React.FC<ITodoCreateProps> = (props) => {
     setContent(e.target.value);
   };
 
+  /* Todo 생성 시, 완료일 변경 함수 */
   const handleDueChange = (selectedDate: Date) => {
     setDue(selectedDate);
   };
 
+  /* Todo 생성 시, 색상 변경 함수 */
   const handleColorClick = (color: Color) => {
     setSelectedColor(selectedColor === color ? null : color);
   };
 
+  /* Todo 생성 시, submit 버튼 클릭 시 실행 함수 */
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!content || !selectedColor) return;

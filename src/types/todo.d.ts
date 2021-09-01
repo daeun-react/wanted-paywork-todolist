@@ -14,6 +14,16 @@ export type AddTodoType = {
   due: string;
 };
 
+export type FilterType = {
+  START: string[];
+  FINISH: string[];
+};
+
+export type SortType = {
+  START: string;
+  FINISH: string;
+};
+
 export type Color = 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'purple';
 
 export type ObjectStringType = {

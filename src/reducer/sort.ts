@@ -1,20 +1,22 @@
+/* Ducks 패턴으로 sort 구현 */
+import { SortType } from 'types/todo';
+
+/* Action */
 export const SET_SORT = 'sort/SET_SORT' as const;
 
+/* Action Creator */
 export const setSort = (status: string, sort: string) => ({
   type: SET_SORT,
   payload: { status, sort },
 });
 
-export type SortType = {
-  START: string;
-  FINISH: string;
-};
-
+/* Type */
 type SortState = {
   sort: SortType;
 };
 type SortAction = ReturnType<typeof setSort>;
 
+/* Initial */
 const initialState: SortState = {
   sort: {
     START: 'create',
@@ -22,6 +24,7 @@ const initialState: SortState = {
   },
 };
 
+/* sort Reducer */
 function sort(state: SortState = initialState, action: SortAction): SortState {
   switch (action.type) {
     case SET_SORT:

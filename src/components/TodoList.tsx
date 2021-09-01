@@ -2,13 +2,11 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { RootState } from 'reducer';
-import { FilterType } from 'reducer/filter';
+import { FilterType, SortType, TodoType } from 'types/todo';
 import { TODO_STATUS } from 'utils/constants';
 import TodoHeader from 'components/TodoHeader';
 import TodoItem from 'components/TodoItem';
 import { ReactComponent as Empty } from 'assets/svg/empty.svg';
-import { SortType } from 'reducer/sort';
-import { TodoType } from 'types/todo';
 
 interface ITodoListProps {
   status: string;
@@ -22,6 +20,7 @@ const TodoList: React.FC<ITodoListProps> = ({ status }) => {
   const colorFilter = filter[status as keyof FilterType];
   const sortName = sort[status as keyof SortType];
 
+  /* 필터 조건에 맞는 Todos 반환 */
   const showTodo = useMemo(() => {
     const todos = data.filter((todo) =>
       status === TODO_STATUS.STARTED
@@ -35,12 +34,14 @@ const TodoList: React.FC<ITodoListProps> = ({ status }) => {
     return filteredTodos;
   }, [colorFilter, data, status]);
 
+  /* Todos 정렬 함수 */
   const onSort = (prev: TodoType, next: TodoType) => {
     return sortName === 'create'
       ? prev.id - next.id
       : new Date(prev.due).getTime() - new Date(next.due).getTime();
   };
 
+  /* TodoItem 렌더링 함수, Todos가 없을 경우 Empty svg 렌더링 */
   const renderTodoItem = () =>
     showTodo.length ? (
       <TodoItemWrapper>

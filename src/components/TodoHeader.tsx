@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { ObjectNumberType } from 'types/todo';
+import { FilterType, SortType, ObjectNumberType } from 'types/todo';
 import { SORT_LIST, COLOR_LIST, TODO_STATUS } from 'utils/constants';
 import { RootState } from 'reducer';
-import { FilterType, toggleFilter } from 'reducer/filter';
+import { toggleFilter } from 'reducer/filter';
+import { setSort } from 'reducer/sort';
 import { ReactComponent as Start } from 'assets/svg/list_start.svg';
 import { ReactComponent as Finish } from 'assets/svg/list_finish.svg';
-import { setSort, SortType } from 'reducer/sort';
 
 interface ITodoHeaderProps {
   status: string;
@@ -22,6 +22,7 @@ const TodoHeader: React.FC<ITodoHeaderProps> = ({ status }) => {
   const colorFilter = filter[status as keyof FilterType];
   const sortName = sort[status as keyof SortType];
 
+  /* 컬러별 TodoList 개수 확인 */
   const todoColorNums = useMemo(() => {
     const todos = data.filter((todo) =>
       status === TODO_STATUS.STARTED
@@ -39,6 +40,7 @@ const TodoHeader: React.FC<ITodoHeaderProps> = ({ status }) => {
     return colors;
   }, [status, data]);
 
+  /* 컬러별 필터링 버튼 UI 컴포넌트 반환 */
   const renderColor = (Colors: ObjectNumberType) =>
     Object.keys(Colors).map((item) => (
       <ColorButton
@@ -51,10 +53,12 @@ const TodoHeader: React.FC<ITodoHeaderProps> = ({ status }) => {
       </ColorButton>
     ));
 
+  /* 컬러 클릭 시, 해당 색상 필터링 적용 */
   const handleColorClick = (color: string) => {
     dispatch(toggleFilter(status, color));
   };
 
+  /* 정렬 클릭 시, 해당 정렬 기준 적용 */
   const handleSortClick = (sort: string) => {
     dispatch(setSort(status, sort));
   };

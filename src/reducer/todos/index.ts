@@ -22,6 +22,7 @@ import { ERROR_MESSAGE } from 'utils/constants';
 import { asyncState } from 'utils/reducer/reducerUtils';
 import * as api from 'api/axios';
 
+/* saga 실행 시, api 함수 비동기 호출 함수 */
 function* sagaAsyncTodo(type: string, ApiFunc: any, action?: TodosAction) {
   const [SUCCESS, FAILURE] = [`${type}_SUCCESS`, `${type}_FAILURE`];
   try {
@@ -43,6 +44,7 @@ function* sagaAsyncTodo(type: string, ApiFunc: any, action?: TodosAction) {
   }
 }
 
+/* Saga 액션 감지 */
 export function* watchTodos() {
   yield takeEvery(GET_TODOS, () => sagaAsyncTodo(GET_TODOS, api.getTodoAll));
   yield takeEvery(ADD_TODO, (action: TodosAction) =>
@@ -59,6 +61,7 @@ export function* watchTodos() {
   );
 }
 
+/* Initial */
 const initialState: TodosState = {
   loading: false,
   failure: false,
@@ -67,6 +70,7 @@ const initialState: TodosState = {
   data: [],
 };
 
+/* todos Reducer */
 function todos(
   state: TodosState = initialState,
   action: TodosAction,

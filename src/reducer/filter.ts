@@ -1,20 +1,22 @@
+/* Ducks 패턴으로 filter 구현 */
+import { FilterType } from 'types/todo';
+
+/* Action */
 export const TOGGLE_FILTER = 'filter/TOGGLE_FILTER' as const;
 
+/* Action Creator */
 export const toggleFilter = (status: string, color: string) => ({
   type: TOGGLE_FILTER,
   payload: { status, color },
 });
 
-export type FilterType = {
-  START: string[];
-  FINISH: string[];
-};
-
+/* Type */
 type FilterState = {
   filter: FilterType;
 };
 type FilterAction = ReturnType<typeof toggleFilter>;
 
+/* Initial */
 const initialState: FilterState = {
   filter: {
     START: [],
@@ -22,6 +24,7 @@ const initialState: FilterState = {
   },
 };
 
+/* filter Reducer */
 function filter(
   state: FilterState = initialState,
   action: FilterAction,

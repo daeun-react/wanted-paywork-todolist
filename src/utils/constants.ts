@@ -8,7 +8,6 @@ import {
 import { ObjectStringType } from 'types/todo';
 
 export const BASE_URL = 'http://paywork-todo.herokuapp.com/';
-// export const BASE_URL = 'http://localhost:4000';
 export const TIME_ZONE: string = 'ko-KR';
 export const DATE_OPTION: Intl.DateTimeFormatOptions = {
   year: 'numeric',

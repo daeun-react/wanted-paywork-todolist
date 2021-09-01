@@ -20,23 +20,28 @@ const TodoItem: React.FC<ITodoItemProps> = ({ todo }) => {
   const [editContent, setEditContent] = useState<string>(todo.content);
   const [isEditMode, setEditMode] = useState<boolean>(false);
 
+  /* 수정 <-> 텍스트 모드 변경 */
+  const handleEditMode = () => {
+    setEditMode(!isEditMode);
+  };
+
+  /* 수정 input 값 변경 함수 */
+  const handleEditContent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditContent(e.target.value);
+  };
+
+  /* 텍스트 수정 dispatch 실행 */
   const handleUpdate = () => {
     dispatch(updateTodo(todo.id, editContent));
     setEditMode(!isEditMode);
   };
 
-  const handleEditMode = () => {
-    setEditMode(!isEditMode);
-  };
-
-  const handleEditContent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEditContent(e.target.value);
-  };
-
+  /* 삭제 dispatch 실행  */
   const handleDelete = () => {
     dispatch(deleteTodo(todo.id));
   };
 
+  /* D-day 계산  */
   const gap =
     new Date().setHours(0, 0, 0, 0).valueOf() -
     new Date(todo.due).setHours(0, 0, 0, 0).valueOf();

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'reducer';
 import { getTodos } from 'reducer/todos/actions';
+import { TODO_STATUS } from 'utils/constants';
 import Spinner from 'components/common/Spinner';
 import ErrorMessage from 'components/common/ErrorMessage';
 import TodoCreate from 'components/TodoCreate';
 import TodoList from 'components/TodoList';
-import { TODO_STATUS } from 'utils/constants';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();

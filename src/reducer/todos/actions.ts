@@ -1,5 +1,6 @@
 import { TodoType, AddTodoType } from 'types/todo';
 
+/* Action */
 export const GET_TODOS = 'todos/GET_TODOS' as const;
 export const GET_TODOS_SUCCESS = 'todos/GET_TODOS_SUCCESS' as const;
 export const GET_TODOS_FAILURE = 'todos/GET_TODOS_FAILURE' as const;
@@ -20,6 +21,7 @@ export const UPDATE_TODO = 'todo/UPDATE_TODO' as const;
 export const UPDATE_TODO_SUCCESS = 'todo/UPDATE_TODO_SUCCESS' as const;
 export const UPDATE_TODO_FAILURE = 'todo/UPDATE_TODO_FAILURE' as const;
 
+/* Action Creator*/
 export const getTodos = () => ({ type: GET_TODOS, payload: null });
 
 export const getTodosSuccess = (payload: {
