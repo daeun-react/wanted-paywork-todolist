@@ -2,6 +2,9 @@
 
 ## [🔗 배포 링크](https://daeun-react.github.io/wanted-paywork-todolist/)
 
+## 시연 영상
+![최종](https://user-images.githubusercontent.com/67173064/131741863-713e7e1b-17cc-4ad6-a731-edc01bc64457.gif)
+
 ## 요구 사항 및 구현 기능
 
 - [x] redux + redux-saga + typescript 사용
