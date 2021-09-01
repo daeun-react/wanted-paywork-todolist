@@ -13,21 +13,33 @@ import {
   DELETE_TODO,
   DELETE_TODO_SUCCESS,
   DELETE_TODO_FAILURE,
+  UPDATE_TODO,
+  UPDATE_TODO_SUCCESS,
+  UPDATE_TODO_FAILURE,
 } from 'reducer/todos/actions';
 import { TodosState, TodosAction } from 'reducer/todos/types';
+import { ERROR_MESSAGE } from 'utils/constants';
 import { asyncState } from 'utils/reducer/reducerUtils';
 import * as api from 'api/axios';
 
 function* sagaAsyncTodo(type: string, ApiFunc: any, action?: TodosAction) {
   const [SUCCESS, FAILURE] = [`${type}_SUCCESS`, `${type}_FAILURE`];
   try {
-    const result: TodoType[] =
+    const response: {
+      msg: string;
+      result: TodoType[] | number;
+      content?: string;
+    } =
       action && action.payload
         ? yield call(ApiFunc, action.payload)
         : yield call(ApiFunc);
-    yield put({ type: SUCCESS, payload: result });
+
+    yield put({ type: SUCCESS, payload: response });
   } catch (error) {
-    yield put({ type: FAILURE, payload: error });
+    yield put({
+      type: FAILURE,
+      payload: ERROR_MESSAGE[type],
+    });
   }
 }
 
@@ -42,11 +54,16 @@ export function* watchTodos() {
   yield takeEvery(DELETE_TODO, (action: TodosAction) =>
     sagaAsyncTodo(DELETE_TODO, api.deleteTodoAPI, action),
   );
+  yield takeEvery(UPDATE_TODO, (action: TodosAction) =>
+    sagaAsyncTodo(UPDATE_TODO, api.updateTodoAPI, action),
+  );
 }
 
 const initialState: TodosState = {
   loading: false,
   failure: false,
+  activeTodoId: 0,
+  msg: '',
   data: [],
 };
 
@@ -56,36 +73,63 @@ function todos(
 ): TodosState {
   switch (action.type) {
     case GET_TODOS:
+      return asyncState.load(state.data);
+
     case ADD_TODO:
     case TOGGLE_TODO:
     case DELETE_TODO:
-      return asyncState.load(state.data);
+    case UPDATE_TODO:
+      return asyncState.init(state.data);
 
     case GET_TODOS_SUCCESS:
-      return asyncState.success(action.payload);
+      return asyncState.success(action.payload.msg, 0, action.payload.result);
 
     case ADD_TODO_SUCCESS:
-      return asyncState.success([...state.data, action.payload]);
+      return asyncState.success(action.payload.msg, action.payload.result.id, [
+        action.payload.result,
+        ...state.data,
+      ]);
 
     case TOGGLE_TODO_SUCCESS:
       const toggleTodo = state.data.map((todo) =>
-        todo.id === Number(action.payload.id)
+        todo.id === action.payload.result
           ? { ...todo, isCheck: !todo.isCheck }
           : todo,
       );
-      return asyncState.success(toggleTodo);
+      return asyncState.success(
+        action.payload.msg,
+        action.payload.result,
+        toggleTodo,
+      );
 
     case DELETE_TODO_SUCCESS:
       const deleteTodo = state.data.filter(
-        (todo) => todo.id !== Number(action.payload),
+        (todo) => todo.id !== action.payload.result,
       );
-      return asyncState.success(deleteTodo);
+      return asyncState.success(
+        action.payload.msg,
+        action.payload.result,
+        deleteTodo,
+      );
+
+    case UPDATE_TODO_SUCCESS:
+      const updateTodo = state.data.map((todo) =>
+        todo.id === action.payload.result
+          ? { ...todo, content: action.payload.content }
+          : todo,
+      );
+      return asyncState.success(
+        action.payload.msg,
+        action.payload.result,
+        updateTodo,
+      );
 
     case GET_TODOS_FAILURE:
     case ADD_TODO_FAILURE:
     case TOGGLE_TODO_FAILURE:
     case DELETE_TODO_FAILURE:
-      return asyncState.failure();
+    case UPDATE_TODO_FAILURE:
+      return asyncState.failure(action.payload);
 
     default:
       return state;

@@ -5,16 +5,36 @@ export const asyncState = {
   load: (data: TodoType[]): TodosState => ({
     loading: true,
     failure: false,
+    activeTodoId: 0,
+    msg: '',
     data,
   }),
-  success: (data: TodoType[]): TodosState => ({
+
+  init: (data: TodoType[]): TodosState => ({
     loading: false,
     failure: false,
+    activeTodoId: 0,
+    msg: '',
     data,
   }),
-  failure: (): TodosState => ({
+
+  success: (
+    msg: string,
+    activeTodoId: number,
+    data: TodoType[],
+  ): TodosState => ({
+    loading: false,
+    failure: false,
+    activeTodoId,
+    msg,
+    data,
+  }),
+
+  failure: (msg: string): TodosState => ({
     loading: false,
     failure: true,
+    activeTodoId: 0,
+    msg,
     data: [],
   }),
 };

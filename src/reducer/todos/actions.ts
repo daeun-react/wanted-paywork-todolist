@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { TodoType, AddTodoType } from 'types/todo';
 
 export const GET_TODOS = 'todos/GET_TODOS' as const;
@@ -17,16 +16,23 @@ export const DELETE_TODO = 'todo/DELTE_TODO' as const;
 export const DELETE_TODO_SUCCESS = 'todo/DELTE_TODO_SUCCESS' as const;
 export const DELETE_TODO_FAILURE = 'todo/DELTE_TODO_FAILURE' as const;
 
+export const UPDATE_TODO = 'todo/UPDATE_TODO' as const;
+export const UPDATE_TODO_SUCCESS = 'todo/UPDATE_TODO_SUCCESS' as const;
+export const UPDATE_TODO_FAILURE = 'todo/UPDATE_TODO_FAILURE' as const;
+
 export const getTodos = () => ({ type: GET_TODOS, payload: null });
 
-export const getTodosSuccess = (payload: TodoType[]) => ({
+export const getTodosSuccess = (payload: {
+  msg: string;
+  result: TodoType[];
+}) => ({
   type: GET_TODOS_SUCCESS,
   payload,
 });
 
-export const getTodosFailure = (error: AxiosError) => ({
+export const getTodosFailure = (msg: string) => ({
   type: GET_TODOS_FAILURE,
-  payload: error,
+  payload: msg,
 });
 
 export const addTodo = (todo: AddTodoType) => ({
@@ -34,39 +40,64 @@ export const addTodo = (todo: AddTodoType) => ({
   payload: todo,
 });
 
-export const addTodoSuccess = (payload: TodoType) => ({
+export const addTodoSuccess = (payload: { msg: string; result: TodoType }) => ({
   type: ADD_TODO_SUCCESS,
   payload,
 });
 
-export const addTodoFailure = (error: AxiosError) => ({
+export const addTodoFailure = (msg: string) => ({
   type: ADD_TODO_FAILURE,
-  payload: error,
+  payload: msg,
 });
 
-export const toggleTodo = (todo: TodoType) => ({
+export const toggleTodo = (id: number, isCheck: boolean) => ({
   type: TOGGLE_TODO,
-  payload: todo,
+  payload: { id, isCheck },
 });
 
-export const toggleTodoSuccess = (payload: TodoType) => ({
+export const toggleTodoSuccess = (payload: {
+  msg: string;
+  result: number;
+}) => ({
   type: TOGGLE_TODO_SUCCESS,
   payload,
 });
 
-export const toggleTodoFailure = (error: AxiosError) => ({
+export const toggleTodoFailure = (msg: string) => ({
   type: TOGGLE_TODO_FAILURE,
-  payload: error,
+  payload: msg,
 });
 
 export const deleteTodo = (id: number) => ({ type: DELETE_TODO, payload: id });
 
-export const deleteTodoSuccess = (payload: TodoType) => ({
+export const deleteTodoSuccess = (payload: {
+  msg: string;
+  result: number;
+}) => ({
   type: DELETE_TODO_SUCCESS,
   payload,
 });
 
-export const deleteTodoFailure = (error: AxiosError) => ({
+export const deleteTodoFailure = (msg: string) => ({
   type: DELETE_TODO_FAILURE,
-  payload: error,
+  payload: msg,
+});
+
+export const updateTodo = (id: number, content: string) => ({
+  type: UPDATE_TODO,
+  payload: { id, content },
+});
+
+export const updateTodoSuccess = (payload: {
+  msg: string;
+  result: number;
+  content: string;
+}) => ({
+  type: UPDATE_TODO_SUCCESS,
+  payload,
+});
+
+export const updateTodoFailure = (msg: string) => ({
+  type: UPDATE_TODO_FAILURE,
+  payload: msg,
 });

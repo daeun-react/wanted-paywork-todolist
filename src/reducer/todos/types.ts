@@ -5,6 +5,8 @@ import * as actions from 'reducer/todos/actions';
 export type TodosState = {
   loading: boolean;
   failure: boolean;
+  activeTodoId: number;
+  msg: string;
   data: TodoType[];
 };
 

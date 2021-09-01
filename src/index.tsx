@@ -3,10 +3,11 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer, { rootSaga } from 'reducer';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/GlobalStyles';
 import { Theme } from 'styles/Theme';
-import rootReducer, { rootSaga } from 'reducer';
+import 'react-datepicker/dist/react-datepicker.css';
 import App from 'App';
 
 const sagaMiddleware = createSagaMiddleware();
