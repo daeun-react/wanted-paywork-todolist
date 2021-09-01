@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.js": "/wanted-paywork-todolist/static/js/main.296b868c.chunk.js",
+    "main.js.map": "/wanted-paywork-todolist/static/js/main.296b868c.chunk.js.map",
+    "runtime-main.js": "/wanted-paywork-todolist/static/js/runtime-main.11debd18.js",
+    "runtime-main.js.map": "/wanted-paywork-todolist/static/js/runtime-main.11debd18.js.map",
+    "static/css/2.ecdd39c8.chunk.css": "/wanted-paywork-todolist/static/css/2.ecdd39c8.chunk.css",
+    "static/js/2.343d73fe.chunk.js": "/wanted-paywork-todolist/static/js/2.343d73fe.chunk.js",
+    "static/js/2.343d73fe.chunk.js.map": "/wanted-paywork-todolist/static/js/2.343d73fe.chunk.js.map",
+    "index.html": "/wanted-paywork-todolist/index.html",
+    "static/css/2.ecdd39c8.chunk.css.map": "/wanted-paywork-todolist/static/css/2.ecdd39c8.chunk.css.map",
+    "static/js/2.343d73fe.chunk.js.LICENSE.txt": "/wanted-paywork-todolist/static/js/2.343d73fe.chunk.js.LICENSE.txt",
+    "static/media/calendar.2d1c3fc1.svg": "/wanted-paywork-todolist/static/media/calendar.2d1c3fc1.svg",
+    "static/media/check.52851d34.svg": "/wanted-paywork-todolist/static/media/check.52851d34.svg",
+    "static/media/edit.96ee3277.svg": "/wanted-paywork-todolist/static/media/edit.96ee3277.svg",
+    "static/media/empty.5b095d05.svg": "/wanted-paywork-todolist/static/media/empty.5b095d05.svg",
+    "static/media/fix.b6557d9e.svg": "/wanted-paywork-todolist/static/media/fix.b6557d9e.svg",
+    "static/media/list_finish.2e5edaca.svg": "/wanted-paywork-todolist/static/media/list_finish.2e5edaca.svg",
+    "static/media/list_start.170400af.svg": "/wanted-paywork-todolist/static/media/list_start.170400af.svg",
+    "static/media/loading.1b664ebd.svg": "/wanted-paywork-todolist/static/media/loading.1b664ebd.svg",
+    "static/media/trash_can.156c9cc0.svg": "/wanted-paywork-todolist/static/media/trash_can.156c9cc0.svg",
+    "static/media/xmark.ad45c06a.svg": "/wanted-paywork-todolist/static/media/xmark.ad45c06a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.11debd18.js",
+    "static/css/2.ecdd39c8.chunk.css",
+    "static/js/2.343d73fe.chunk.js",
+    "static/js/main.296b868c.chunk.js"
+  ]
+}
