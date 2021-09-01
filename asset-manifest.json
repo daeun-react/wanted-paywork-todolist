@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/wanted-paywork-todolist/static/js/main.ecdc57e8.chunk.js",
-    "main.js.map": "/wanted-paywork-todolist/static/js/main.ecdc57e8.chunk.js.map",
+    "main.js": "/wanted-paywork-todolist/static/js/main.f9f981b8.chunk.js",
+    "main.js.map": "/wanted-paywork-todolist/static/js/main.f9f981b8.chunk.js.map",
     "runtime-main.js": "/wanted-paywork-todolist/static/js/runtime-main.11debd18.js",
     "runtime-main.js.map": "/wanted-paywork-todolist/static/js/runtime-main.11debd18.js.map",
     "static/css/2.ecdd39c8.chunk.css": "/wanted-paywork-todolist/static/css/2.ecdd39c8.chunk.css",
-    "static/js/2.343d73fe.chunk.js": "/wanted-paywork-todolist/static/js/2.343d73fe.chunk.js",
-    "static/js/2.343d73fe.chunk.js.map": "/wanted-paywork-todolist/static/js/2.343d73fe.chunk.js.map",
+    "static/js/2.ff96c773.chunk.js": "/wanted-paywork-todolist/static/js/2.ff96c773.chunk.js",
+    "static/js/2.ff96c773.chunk.js.map": "/wanted-paywork-todolist/static/js/2.ff96c773.chunk.js.map",
     "index.html": "/wanted-paywork-todolist/index.html",
     "static/css/2.ecdd39c8.chunk.css.map": "/wanted-paywork-todolist/static/css/2.ecdd39c8.chunk.css.map",
-    "static/js/2.343d73fe.chunk.js.LICENSE.txt": "/wanted-paywork-todolist/static/js/2.343d73fe.chunk.js.LICENSE.txt",
+    "static/js/2.ff96c773.chunk.js.LICENSE.txt": "/wanted-paywork-todolist/static/js/2.ff96c773.chunk.js.LICENSE.txt",
     "static/media/calendar.2d1c3fc1.svg": "/wanted-paywork-todolist/static/media/calendar.2d1c3fc1.svg",
     "static/media/check.52851d34.svg": "/wanted-paywork-todolist/static/media/check.52851d34.svg",
     "static/media/edit.96ee3277.svg": "/wanted-paywork-todolist/static/media/edit.96ee3277.svg",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.11debd18.js",
     "static/css/2.ecdd39c8.chunk.css",
-    "static/js/2.343d73fe.chunk.js",
-    "static/js/main.ecdc57e8.chunk.js"
+    "static/js/2.ff96c773.chunk.js",
+    "static/js/main.f9f981b8.chunk.js"
   ]
 }
