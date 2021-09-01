@@ -41,6 +41,7 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   white-space: nowrap;
   width: 1px;
   cursor: pointer;
+  opacity: 0;
 `;
 
 const StyledCheckbox = styled.div<{ checked: boolean; color: Color }>`
