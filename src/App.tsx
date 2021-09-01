@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'reducer';
-import { deleteTodo, getTodos, toggleTodo } from 'reducer/todos/actions';
+import { getTodos } from 'reducer/todos/actions';
+import Spinner from 'components/common/Spinner';
+import ErrorMessage from 'components/common/ErrorMessage';
 import TodoCreate from 'components/TodoCreate';
-import { TodoType } from 'types/todo';
+import TodoList from 'components/TodoList';
+import { TODO_STATUS } from 'utils/constants';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const { loading, failure, data } = useSelector(
+  const { loading, failure, msg } = useSelector(
     (state: RootState) => state.todos,
   );
 
@@ -16,37 +19,29 @@ const App: React.FC = () => {
     dispatch(getTodos());
   }, [dispatch]);
 
-  // if (loading) return <div>로딩중...</div>;
-  // if (failure) return <div>{'api 호출 실패...'}</div>;
-
-  const onToggle = (todo: TodoType) => {
-    const newTodo: TodoType = { ...todo, isCheck: !todo.isCheck };
-    dispatch(toggleTodo(newTodo));
-  };
-
-  const onDelete = (id: number) => {
-    dispatch(deleteTodo(id));
-  };
+  if (loading)
+    return (
+      <Container>
+        <Spinner />
+      </Container>
+    );
+  if (failure)
+    return (
+      <Container>
+        <ErrorMessage msg={msg} />
+      </Container>
+    );
 
   return (
-    <Container>
-      <TodoWrapper>
-        <TodoCreate />
-        <ul>
-          {data.map((item) => (
-            <li key={item.id}>
-              <input
-                type="checkbox"
-                checked={item.isCheck}
-                onChange={() => onToggle(item)}
-              />
-              {item.content}
-              <button onClick={() => onDelete(item.id)}>삭제</button>
-            </li>
-          ))}
-        </ul>
-      </TodoWrapper>
-    </Container>
+    <>
+      <Container>
+        <TodoWrapper>
+          <TodoCreate />
+          <TodoList status={TODO_STATUS.STARTED} />
+          <TodoList status={TODO_STATUS.FINISHED} />
+        </TodoWrapper>
+      </Container>
+    </>
   );
 };
 
@@ -56,12 +51,11 @@ const Container = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: ${({ theme }) => theme.color.indigo};
+  background: linear-gradient(to top, #000000, #434343);
 `;
 
 const TodoWrapper = styled.div`
-  width: 768px;
-  height: 500px;
+  width: 700px;
   padding: 24px;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.color.white};
