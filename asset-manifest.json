@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/wanted-paywork-todolist/static/js/main.296b868c.chunk.js",
-    "main.js.map": "/wanted-paywork-todolist/static/js/main.296b868c.chunk.js.map",
+    "main.js": "/wanted-paywork-todolist/static/js/main.ecdc57e8.chunk.js",
+    "main.js.map": "/wanted-paywork-todolist/static/js/main.ecdc57e8.chunk.js.map",
     "runtime-main.js": "/wanted-paywork-todolist/static/js/runtime-main.11debd18.js",
     "runtime-main.js.map": "/wanted-paywork-todolist/static/js/runtime-main.11debd18.js.map",
     "static/css/2.ecdd39c8.chunk.css": "/wanted-paywork-todolist/static/css/2.ecdd39c8.chunk.css",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.11debd18.js",
     "static/css/2.ecdd39c8.chunk.css",
     "static/js/2.343d73fe.chunk.js",
-    "static/js/main.296b868c.chunk.js"
+    "static/js/main.ecdc57e8.chunk.js"
   ]
 }
