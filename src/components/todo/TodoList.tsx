@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { RootState } from 'reducer';
 import { FilterType, SortType, TodoType } from 'types/todo';
 import { TODO_STATUS } from 'utils/constants';
-import TodoHeader from 'components/TodoHeader';
-import TodoItem from 'components/TodoItem';
+import TodoHeader from 'components/todo/TodoHeader';
+import TodoItem from 'components/todo/TodoItem';
 import { ReactComponent as Empty } from 'assets/svg/empty.svg';
 
 interface ITodoListProps {

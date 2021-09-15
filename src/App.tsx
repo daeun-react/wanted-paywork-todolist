@@ -6,8 +6,8 @@ import { getTodos } from 'reducer/todos/actions';
 import { TODO_STATUS } from 'utils/constants';
 import Spinner from 'components/common/Spinner';
 import ErrorMessage from 'components/common/ErrorMessage';
-import TodoCreate from 'components/TodoCreate';
-import TodoList from 'components/TodoList';
+import TodoCreate from 'components/todo/TodoCreate';
+import TodoList from 'components/todo/TodoList';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
